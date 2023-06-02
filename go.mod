@@ -2,7 +2,7 @@ module github.com/speakeasy-api/speakeasy-proxy
 
 go 1.20
 
-require github.com/speakeasy-api/speakeasy-go-sdk v1.7.0
+require github.com/speakeasy-api/speakeasy-go-sdk v1.8.0
 
 require (
 	github.com/chromedp/cdproto v0.0.0-20220629234738-4cfc9cdeeb92 // indirect
@@ -51,5 +51,3 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-replace github.com/speakeasy-api/speakeasy-go-sdk => github.com/speakeasy-api/speakeasy-go-sdk v1.7.1-0.20230601130549-011890e2d318
