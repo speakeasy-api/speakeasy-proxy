@@ -87,13 +87,15 @@ SPEAKEASY_API_KEY='{API_KEY_HERE}' ./speakeasy-proxy
 
 ### Run Docker Image
 
-If built locally:
+If using our pre-built image first pull the required image:
+
+```bash
+docker pull ghcr.io/speakeasy-api/speakeasy-proxy:latest
+```
+
+otherwise build the image yourself (see [Building](#building) for details).
+
+Then run the image:
 
 ```bash
 docker run --network="host" -p 3333:3333 -v $(pwd)/config.yaml:/config.yaml -v $(pwd)/httpbin.yaml:/httpbin.yaml -e SPEAKEASY_API_KEY='{API_KEY_HERE}' speakeasy-proxy
-```
-
-If using our pre-built image:
-
-```bash
-```
