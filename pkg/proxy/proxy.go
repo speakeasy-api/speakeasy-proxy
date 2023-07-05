@@ -8,7 +8,7 @@ import (
 	"github.com/speakeasy-api/speakeasy-proxy/internal/handler"
 )
 
-type ProxyConfig struct {
+type Options struct {
 	DownstreamBaseURL string
 	Port              string
 	APIKey            string
@@ -17,18 +17,18 @@ type ProxyConfig struct {
 	OpenAPIDocument   []byte
 }
 
-func StartProxy(config ProxyConfig) error {
-	handler := handler.NewHandler(config.DownstreamBaseURL)
+func StartProxy(opts Options) error {
+	handler := handler.NewHandler(opts.DownstreamBaseURL)
 
 	sdk := speakeasy.New(speakeasy.Config{
-		APIKey:          config.APIKey,
-		ApiID:           config.ApiID,
-		VersionID:       config.VersionID,
-		OpenAPIDocument: config.OpenAPIDocument,
+		APIKey:          opts.APIKey,
+		ApiID:           opts.ApiID,
+		VersionID:       opts.VersionID,
+		OpenAPIDocument: opts.OpenAPIDocument,
 	})
 
-	fmt.Printf("proxy listening on port %s and redirecting to %s\n", config.Port, config.DownstreamBaseURL)
-	if err := http.ListenAndServe(fmt.Sprintf(":%s", config.Port), sdk.Middleware(handler)); err != nil {
+	fmt.Printf("proxy listening on port %s and redirecting to %s\n", opts.Port, opts.DownstreamBaseURL)
+	if err := http.ListenAndServe(fmt.Sprintf(":%s", opts.Port), sdk.Middleware(handler)); err != nil {
 		return err
 	}
 
