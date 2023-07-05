@@ -1,0 +1,5 @@
+downstreamBaseURL: http://httpbin:80
+apiID: proxy-test
+versionID: "0.0.1"
+openAPIDocs:
+  - ./httpbin.yaml

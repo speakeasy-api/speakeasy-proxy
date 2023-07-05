@@ -4,3 +4,18 @@ services:
     image: kennethreitz/httpbin
     ports:
       - "8001:80"
+  speakeasy-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - CONFIG_LOCATION=./example-config.yaml
+      - OPENAPI_DOCS=./httpbin.yaml
+      - SPEAKEASY_API_KEY=${SPEAKEASY_API_KEY}
+    volumes:
+      - ./example-config.yaml:/example-config.yaml
+      - ./httpbin.yaml:/httpbin.yaml
+    ports:
+      - "3333:3333"
+    depends_on:
+      - httpbin

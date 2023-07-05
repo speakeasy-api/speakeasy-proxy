@@ -17,7 +17,7 @@ type Config struct {
 	ApiID             string   `yaml:"apiID" env:"SPEAKEASY_API_ID" validate:"required"`
 	VersionID         string   `yaml:"versionID" env:"SPEAKEASY_VERSION_ID" validate:"required"`
 	OpenAPIDocs       []string `yaml:"openAPIDocs" env:"OPENAPI_DOCS" validate:"min=1" default:"[\"./openapi.yaml\"]"`
-	ConfigLocation    string   `yaml:"configLocation" env:"CONFIG_LOCATION" validate:"required" default:"./config.yaml"`
+	ConfigLocation    string   `env:"CONFIG_LOCATION" validate:"required" default:"./config.yaml"`
 }
 
 func Load() (*Config, error) {
